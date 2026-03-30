@@ -214,7 +214,7 @@ def slugify(text: str) -> str:
     return re.sub(r"[^A-Za-z0-9._-]+", "-", text).strip(".-") or "repo"
 
 def default_output_path(date_text: str, scope_slug: str) -> Path:
-    return CODEX_HOME / ".codex" / "closeout" / date_text / f"{scope_slug}-closeout.md"
+    return CODEX_HOME / ".codex" / "closeout" / date_text / f"{scope_slug}-worktree-closeout.md"
 
 def yaml_scalar(value: str) -> str:
     return "'" + value.replace("'", "''") + "'"
@@ -223,7 +223,7 @@ def build_summary(date_text: str, scope: str, repo_reports: list[dict[str, Any]]
     counts = Counter(item["classification"] for report in repo_reports for item in report["items"])
     branches = {f"{path_key(report['repo'])}:{item['branch']}" for report in repo_reports for item in report["items"] if item["branch"]}
     return {
-        "skill": "closeout", "date_scope": date_text, "scan_scope": scope,
+        "skill": "worktree-closeout", "date_scope": date_text, "scan_scope": scope,
         "generated_at": datetime.now().astimezone().isoformat(timespec="seconds"), "repo_count": len(repo_reports),
         "worktree_count": sum(len(report["items"]) for report in repo_reports), "branch_count": len(branches),
         "safe_prune_count": counts.get("safe_prune", 0), "ready_to_merge_count": counts.get("ready_to_merge", 0),
@@ -298,3 +298,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
+

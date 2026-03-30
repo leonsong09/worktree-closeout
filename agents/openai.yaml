@@ -1,4 +1,4 @@
 interface:
-  display_name: "closeout"
-  short_description: "Scan branch and worktree closeout status and suggest a safe handling order"
-  default_prompt: "Use $closeout to resolve the exact date first, ask for scan scope second, then produce a read-only closeout artifact summary, suggested order, controller prompt, and per-item prompts."
+  display_name: "worktree-closeout"
+  short_description: "按日期扫描 worktree 与分支收口状态，并生成只读收口建议"
+  default_prompt: "Use $worktree-closeout to resolve the exact date first, ask for scan scope second, then produce a read-only closeout artifact summary, suggested order, controller prompt, and per-item prompts."

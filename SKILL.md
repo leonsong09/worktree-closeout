@@ -1,9 +1,9 @@
 ---
-name: closeout
+name: worktree-closeout
 description: Use when the user asks for worktree closeout, branch closeout, parallel closeout, worktree janitor, 工作树收口, 分支收口, or 并行收口, especially when work spans multiple Codex sessions and you need a date-based scan of open worktrees, closeout status, suggested merge/prune order, and prompt-ready handoff instructions.
 ---
 
-# closeout
+# worktree-closeout
 
 ## Overview
 
@@ -21,11 +21,11 @@ This skill does **not** auto-merge, auto-delete, auto-push, or auto-prune. It as
 ## When Not to Use
 
 - **Single current session wrap-up:** use `session-wrap`
-- **Same-day project report:** use `project-daily`
+- **Same-day project report:** use `project-daily-summary`
 - **Single branch is already chosen for final handling:** use `finishing-a-development-branch`
 - **Dangerous branch actions:** do not use this skill as permission to merge, delete, prune, or push automatically
 
-`project-daily` may optionally call this skill when the user wants a **same-day all-repo summary with a closeout appendix**.
+`project-daily-summary` may optionally call this skill when the user wants a **same-day all-repo summary with a closeout appendix**.
 
 ## Required Flow
 
@@ -154,17 +154,17 @@ Do not hide uncertainty. If the artifact and current chat context disagree, call
 ### `session-wrap`
 
 - `session-wrap` closes **one current session**
-- `closeout` scans **across sessions/worktrees for a chosen date**
+- `worktree-closeout` scans **across sessions/worktrees for a chosen date**
 
-### `project-daily`
+### `project-daily-summary`
 
-- `project-daily` is still the primary same-day, by-project summary skill
-- Use `closeout` only when the user also needs a date-based branch/worktree closeout appendix
-- For “当天所有 repo closeout appendix” scenarios, `project-daily` may choose to call this skill
+- `project-daily-summary` is still the primary same-day, by-project summary skill
+- Use `worktree-closeout` only when the user also needs a date-based branch/worktree closeout appendix
+- For “当天所有 repo closeout appendix” scenarios, `project-daily-summary` may choose to call this skill
 
 ### `finishing-a-development-branch`
 
-- `closeout` identifies which items are candidates
+- `worktree-closeout` identifies which items are candidates
 - `finishing-a-development-branch` performs the single-branch finish flow after a candidate is chosen
 
 ## Guardrails
@@ -176,3 +176,6 @@ Do not hide uncertainty. If the artifact and current chat context disagree, call
 - No fabricated status if the scan comes back empty or ambiguous
 
 Use this skill to organize closeout work, not to silently execute risky git actions.
+
+
+
