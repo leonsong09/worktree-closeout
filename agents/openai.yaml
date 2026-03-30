@@ -1,0 +1,4 @@
+interface:
+  display_name: "closeout"
+  short_description: "Scan branch and worktree closeout status and suggest a safe handling order"
+  default_prompt: "Use $closeout to resolve the exact date first, ask for scan scope second, then produce a read-only closeout artifact summary, suggested order, controller prompt, and per-item prompts."
